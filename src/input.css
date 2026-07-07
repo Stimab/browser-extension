@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Noto Sans Variable - Regular */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Noto Sans Variable - Italic */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("assets/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-noto-sans: "Noto Sans";
+
+  /* Neutral */
+  --color-neutral-900: hsl(227, 75%, 14%);
+  --color-neutral-800: hsl(226, 25%, 17%);
+  --color-neutral-700: hsl(225, 23%, 24%);
+  --color-neutral-600: hsl(226, 11%, 37%);
+  --color-neutral-300: hsl(0, 0%, 78%);
+  --color-neutral-200: hsl(217, 61%, 90%);
+  --color-neutral-100: hsl(0, 0%, 93%);
+  --color-neutral-0: hsl(200, 60%, 99%);
+
+  /* Red */
+  --color-primary-400: hsl(3, 86%, 64%);
+  --color-primary-500: hsl(3, 71%, 56%);
+  --color-primary-700: hsl(3, 77%, 44%);
+}
+
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --light-gradient: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+    --dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+  }
+
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    background-attachment: fixed; /* prevents repeat on scroll */
+  }
+}
+
+@utility bg-light-gradient {
+  background: var(--light-gradient);
+}
+
+@utility bg-dark-gradient {
+  background: var(--dark-gradient);
+}
+
+.selected-btn {
+  @apply text-[1.23rem] sm:text-[1rem] py-2 px-5.5 rounded-[2.2rem] bg-primary-700 text-neutral-0 font-medium shadow hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-700 dark:text-neutral-900 cursor-pointer text-center;
+}
+
+.unselected-btn {
+  @apply text-[1.23rem] sm:text-[1rem] py-2 px-5.5 rounded-[2.2rem] bg-neutral-0 font-medium shadow-sm hover:opacity-80 dark:bg-[#2b3445] dark:border-[#3a455a] dark:hover:bg-neutral-600 dark:text-neutral-0 cursor-pointer text-center;
+}
+
+.remove-btn {
+  @apply text-[1.1rem] sm:text-[1rem] py-[0.4rem] px-5 rounded-[2.2rem] bg-neutral-0 font-medium border border-neutral-300 hover:bg-primary-700 dark:bg-neutral-800 dark:border-neutral-600 dark:hover:bg-primary-500 dark:text-neutral-0 cursor-pointer text-center hover:text-neutral-0 dark:hover:text-neutral-900;
+}
+
+.on-style {
+  @apply relative w-12 h-[1.7rem] rounded-full bg-primary-700 hover:bg-primary-500 dark:bg-primary-400 dark:hover:bg-primary-500 border-none cursor-pointer px-1 transition-colors duration-200;
+}
+
+.on-inner-circle {
+  @apply absolute right-1 top-1 w-[1.2rem] h-[1.2rem] bg-white rounded-full transition-transform duration-200;
+}
+
+.off-style {
+  @apply relative w-12 h-[1.7rem] rounded-full bg-neutral-300 dark:bg-neutral-600 border-none cursor-pointer px-1 transition-colors duration-200;
+}
+
+.off-inner-circle {
+  @apply absolute left-1 top-1 w-[1.2rem] h-[1.2rem] bg-white rounded-full transition-transform duration-200;
+}
+
+#toggle.off {
+  @apply bg-neutral-300 dark:bg-neutral-600;
+}
+#toggle.off #thumb {
+  transform: translateX(-22px);
+}
+
+#toggle.on {
+  @apply bg-primary-700 dark:bg-primary-400;
+}
+#toggle.on #thumb {
+  transform: translateX(22px);
+}
